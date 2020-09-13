@@ -36,10 +36,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.getCategoria().nome)
+                @Html.DisplayFor(modelItem => item.nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.nome)
+                @Html.DisplayFor(modelItem => item.getCategoria().nome)
             </td>
             <td>
                 @Convert.ToDecimal(item.preco).ToString("C")

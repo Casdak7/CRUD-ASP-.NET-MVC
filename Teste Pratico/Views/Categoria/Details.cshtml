@@ -60,10 +60,10 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.getCategoria().nome)
+                            @Html.DisplayFor(modelItem => item.nome)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.nome)
+                            @Html.DisplayFor(modelItem => item.getCategoria().nome)
                         </td>
                         <td>
                             @Convert.ToDecimal(item.preco).ToString("C")
@@ -72,8 +72,8 @@
                             @item.ativo.ToString()
                         </td>
                         <td>
-                            @Html.ActionLink("Editar", "CreateOrUpdate", new { id = item.id }, new { @class = "btn btn-warning" })
-                            @Html.ActionLink((item.ativo ? "Desativar" : "Ativar"), "Delete", new { id = item.id }, new { @class = (item.ativo ? "btn btn-danger" : "btn btn-success") })
+                            @Html.ActionLink("Editar", "CreateOrUpdate", "Produto", new { id = item.id }, new { @class = "btn btn-warning" })
+                            @Html.ActionLink((item.ativo ? "Desativar" : "Ativar"), "Delete", "Produto", new { id = item.id }, new { @class = (item.ativo ? "btn btn-danger" : "btn btn-success") })
                         </td>
                     </tr>
                 }
