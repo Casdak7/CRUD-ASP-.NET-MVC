@@ -41,6 +41,24 @@ namespace Teste_Pratico.Controllers
             DapperORM.ExecuteWithoutReturn("CategoriaCreateOrUpdate", parameters);
             return RedirectToAction("Index");
         }
+        
+        [HttpPost]
+        public String CreateOrUpdateAJAX(Categoria categoria)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("_id", categoria.id);
+            parameters.Add("_nome", categoria.nome);
+            DapperORM.ExecuteWithoutReturn("CategoriaCreateOrUpdate", parameters);
+            if(categoria.id == 0)
+            {
+                return "Categoria criada com Sucesso!";
+            }
+            else
+            {
+                return "Categoria "+ categoria.nome +" atualizada com Sucesso!";
+
+            }
+        }
 
         public ActionResult Delete(int id)
         {

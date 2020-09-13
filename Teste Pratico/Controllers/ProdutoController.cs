@@ -47,6 +47,27 @@ namespace Teste_Pratico.Controllers
             DapperORM.ExecuteWithoutReturn("ProdutoCreateOrUpdate", parameters);
             return RedirectToAction("Index");
         }
+        
+        [HttpPost]
+        public String CreateOrUpdateAJAX(Produto produto)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("_id", produto.id);
+            parameters.Add("_nome", produto.nome);
+            parameters.Add("_categoria_id", produto.categoria_id);
+            parameters.Add("_preco", produto.preco);
+            parameters.Add("_ativo", produto.ativo);
+            DapperORM.ExecuteWithoutReturn("ProdutoCreateOrUpdate", parameters);
+            if (produto.id == 0)
+            {
+                return "Produto criado com Sucesso!";
+            }
+            else
+            {
+                return "Produto " + produto.nome + " atualizado com Sucesso!";
+
+            }
+        }
 
         public ActionResult Delete(int id)
         {
